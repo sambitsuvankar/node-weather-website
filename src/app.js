@@ -3,6 +3,8 @@ const express = require('express')
 const hbs = require('hbs')
 const utils = require('./utils/geocode')
 
+const port = process.env.PORT || 3000 //This is gonna set 'port' to the environment variable value
+
 const app = express();
 
 const publicDirectoryPath = path.join(__dirname, '../public')  // Derfine paths for Express config.
@@ -126,9 +128,9 @@ app.get('*',(req,res) => {   // This has to be on the last after all routes are 
     })
 })
 
-app.listen(3000, () => {
-    console.log("Server is up on port 3000")
-})
+app.listen(port, () => {
+    console.log("Server is up on port " + port)
+})   //----> We can listen to port 3000 when we are running the app locally on localhost.
 
 
 // To make the nodemon server listen to each file changes in ".js" as well as ".hbs" file extention we need to start the server with this command ------> nodemon src/app.js -e js,hbs
